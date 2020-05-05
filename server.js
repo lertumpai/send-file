@@ -4,10 +4,16 @@ const bodyParser = require('body-parser')
 const port = 3000
 const app = express()
 
+// import routes
+const upload = require('./router/upload/upload')
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('./', (req, res) => {
+// add routes
+app.use('/upload', upload)
+
+app.get('/', (req, res) => {
     res.send('Hello World')
 })
 
